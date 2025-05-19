@@ -1,3 +1,6 @@
+# customer.py
+from order import Order
+
 class Customer:
     all_customers = []
 
@@ -27,18 +30,16 @@ class Customer:
     def create_order(self, coffee, price):
         new_order = Order(self, coffee, price)
         self._orders.append(new_order)
+        coffee._orders.append(new_order)
         return new_order
 
     @classmethod
     def most_aficionado(cls, coffee):
         if not coffee.orders():
             return None
-            
-        customers_spending = {}
+
+        customer_spending = {}
         for order in coffee.orders():
-            if order.customer in customers_spending:
-                customers_spending[order.customer] += order.price
-            else:
-                customers_spending[order.customer] = order.price
-                
-        return max(customers_spending.items(), key=lambda x: x[1])[0]
+            customer_spending[order.customer] = customer_spending.get(order.customer, 0) + order.price
+
+        return max(customer_spending, key=customer_spending.get)
