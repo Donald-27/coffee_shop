@@ -6,6 +6,7 @@ class Coffee:
         self._orders = []
         Coffee.all_coffees.append(self)
 
+
     @property
     def name(self):
         return self._name
