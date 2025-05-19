@@ -1,4 +1,4 @@
-# customer.py
+
 from order import Order
 
 class Customer:
