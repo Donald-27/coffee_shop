@@ -16,3 +16,7 @@ def name(self, value):
         if not 1 <= len(value) <= 15:
             raise ValueError("Name must be between 1 and 15 characters")
         self._name = value
+def orders(self):
+        return self._orders
+def coffees(self):
+        return list({order.coffee for order in self._orders})
